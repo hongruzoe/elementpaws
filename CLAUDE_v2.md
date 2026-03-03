@@ -34,9 +34,9 @@ Step 2: 宠物信息（名字 + 宠物类型 + 出生月份或领养月份 + 5-6
 
 ### 核心文案
 
-标题："Discover the Unique Energy Bond Between You and Your Pet"
+标题："Discover the Ancient Energy Bond Between You and Your Pet"
 
-副标题："Based on ancient Five Element wisdom — a 3,000-year-old system that maps the energies of nature to every living being — find out what makes your bond unique, and which crystals strengthen it."
+副标题："Based on the ancient Five Element wisdom — a 3,000-year-old system that maps the energies of nature to every living being — find out what makes your bond unique, and which crystals strengthen it."
 
 说明段落："Your pet didn't come to you by accident. The Five Element system reveals that every pet-owner bond carries a unique energy dynamic — one that can be nurtured with the right crystals. Take this 2-minute reading to uncover yours."
 
@@ -50,25 +50,6 @@ Step 2: 宠物信息（名字 + 宠物类型 + 出生月份或领养月份 + 5-6
 - 格式：PNG 或 WebP，文件大小控制在 500KB 以内
 - 图片文件由用户提供，放在项目 `public/images/` 目录下，文件名 `hero.png`
 - 如果图片文件不存在，先用占位图代替，保留布局位置
-
-### 首页布局优化（重要）
-
-**当前问题：首页太长，用户要一直往下滑才能看到重点信息。需要压缩布局。**
-
-**桌面端布局：** 主视觉图放左边，How It Works 放右边，两栏并排展示。这样用户一屏就能看到图片+流程说明。
-**手机端布局：** 改为上下排列（图片在上，How It Works在下）。
-
-### 首页全局字体要求（重要）
-
-**当前问题：除了主标题之外，首页其他所有文字都太小看不清。**
-
-- 主标题：保持大字，当前尺寸OK
-- 副标题/说明文字：字号至少 18px，颜色用浅金色或米白色，确保在深蓝背景上清晰可读
-- How It Works 标题：字号至少 16px，加粗
-- How It Works 描述文字：字号至少 15px
-- Social Proof 数字：字号至少 28px，加粗，金色
-- Social Proof 描述：字号至少 14px
-- 整体原则：宁可偏大也不要偏小，所有文字都必须在深蓝背景上清晰可读
 
 ### How It Works 流程展示
 
@@ -552,24 +533,12 @@ Bond support: "For [Pet Name], it promotes a sense of calm watchfulness — supp
 - 2-3句关系总结，从模块三文案中提取精华
 
 底部（引流）：
-- "Discover the Unique Energy Bond Between You and Your Pet"
+- "Discover the Ancient Energy Bond Between You and Your Pet"
 - 网站链接
 
 **不放的内容：** 不放水晶信息、不放详细能量档案、不放FAQ和CTA
 
 **卡片视觉风格：** 与网站一致（深蓝星空背景 + 金色文字），要好看到用户愿意直接发社交平台
-
-**已知bug需修复（重要）：**
-- 网页端卡片预览显示不全，左侧内容被截断，需修复卡片在页面上的渲染布局，确保完整居中显示
-- 下载的图片底部有大面积空白/黑色区域，需修复图片生成时的画布尺寸，内容填满整张卡片，无多余空白
-- 卡片内的文字和图标需居中对齐，确保视觉平衡
-
-**关于链接地址：**
-- 卡片底部的网站链接目前是 localhost，部署后需替换为真实域名
-- 将链接地址设为常量变量，方便部署时统一修改：
-```javascript
-const SITE_URL = 'https://your-domain.vercel.app'; // 部署后替换为真实域名
-```
 
 另外保留一个 "Copy Link 🔗" 文字按钮，用于复制网站地址。
 
