@@ -20,7 +20,7 @@ import WaitlistModal from './WaitlistModal';
 import './ReportPage.css';
 
 // ── Site URL — replace with real domain after deploying ──
-const SITE_URL = 'https://your-domain.vercel.app';
+const SITE_URL = 'https://elementpaws.vercel.app';
 
 // ── Element color helper ──
 function elColor(el) {
