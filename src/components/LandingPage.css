@@ -1,0 +1,122 @@
+.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0 60px;
+}
+
+/* Stars */
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle 3s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.8; }
+}
+
+.landing__inner {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.landing__brand {
+  margin-bottom: 32px;
+}
+
+.landing__logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* Element icons row */
+.landing__elements {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.el-icon {
+  font-size: 1.8rem;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+.el-icon.wood  { animation-delay: 0s; }
+.el-icon.fire  { animation-delay: 0.4s; }
+.el-icon.earth { animation-delay: 0.8s; }
+.el-icon.metal { animation-delay: 1.2s; }
+.el-icon.water { animation-delay: 1.6s; }
+
+.landing__title {
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.landing__subtitle {
+  color: var(--text-secondary);
+  font-style: italic;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.landing__body {
+  color: var(--text-secondary);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+.landing__cta {
+  margin-bottom: 40px;
+}
+
+.landing__btn {
+  font-size: 1.1rem;
+  padding: 18px 48px;
+}
+
+.landing__note {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-top: 12px;
+}
+
+.landing__badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.landing__badges span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 6px 14px;
+  border-radius: 50px;
+}
+
+@media (max-width: 480px) {
+  .landing__elements { gap: 10px; }
+  .el-icon { font-size: 1.4rem; }
+  .landing__btn { width: 100%; max-width: 320px; }
+}
