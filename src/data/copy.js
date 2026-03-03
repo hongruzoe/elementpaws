@@ -46,21 +46,68 @@ export const petProfiles = {
   },
 };
 
+// ── Module 3 Bond Copy — 10 sets (A/B per relationship) ──
+
 export const bondCopy = {
   soul_mirror: {
-    getText: (name) => `You and ${name} are cut from the same cosmic cloth. You share the same elemental energy, which means you understand each other on a level that words can't capture. When you're calm, ${name} is calm. When you're restless, ${name} feels it too. This is a bond of deep resonance — you mirror each other's emotions, amplify each other's strengths, and yes, sometimes double each other's quirks. The key to balance? Introducing a complementary energy that gives you both room to breathe.`,
+    A: {
+      // Wood+Wood, Fire+Fire
+      tagline: 'Double the Energy, Double the Magic',
+      getText: (name) => `You and ${name} are a double dose of the same unstoppable energy. You both live life in the fast lane — always moving, always chasing, always burning bright. When you're excited, ${name} is bouncing off the walls. When you're fired up, ${name} matches your intensity beat for beat. It's thrilling, but it can also be exhausting — two engines running at full speed with no one pumping the brakes. The secret to your bond? A grounding energy that gives you both a place to land.`,
+    },
+    B: {
+      // Earth+Earth, Metal+Metal, Water+Water
+      tagline: 'A Quiet, Unspoken Understanding',
+      getText: (name) => `You and ${name} share a quiet, deep resonance — the kind of bond that doesn't need words. You sit together in comfortable silence. You move through the day in a shared rhythm that feels effortless. Others might not see the depth of your connection, but you feel it in every moment of stillness you share. The beauty of your bond is its peace. The challenge? Sometimes you both sink so deep into your comfort zone that the world outside fades away. A spark of complementary energy can bring fresh life to your beautiful stillness.`,
+    },
   },
   natural_nurturer: {
-    getText: (name) => `You are ${name}'s sun. Your energy naturally feeds and supports theirs, like rain nourishing a garden. You may notice that ${name} visibly relaxes in your presence, or becomes more playful and confident around you. That's not a coincidence — your elemental energy is literally fuel for theirs. This is one of the most harmonious bonds in the Five Element system. Your gift is the ability to nurture without trying. Your challenge is remembering to replenish your own energy too.`,
+    A: {
+      // Water+Wood, Earth+Metal
+      tagline: 'You Give Them Room to Bloom',
+      getText: (name) => `You nurture ${name} the way rain nurtures a seed — quietly, steadily, without ever needing to be loud about it. Your presence alone gives ${name} permission to grow, to explore, to become more fully themselves. You may not realize it, but ${name} is braver because of you. More confident because of you. Your calm, steady energy is the foundation that lets ${name} reach for the sky. Just remember: the rain needs its own source too. Don't forget to fill your own cup.`,
+    },
+    B: {
+      // Wood+Fire, Fire+Earth, Metal+Water
+      tagline: 'You Are Their Spark',
+      getText: (name) => `You are ${name}'s spark plug. Your energy doesn't just support theirs — it ignites it. Around you, ${name} comes alive in ways that surprise even you. More playful. More expressive. More joyful. That's because your elemental energy is the fuel that lights ${name}'s fire. This is one of the most vibrant bonds in the Five Element system — a relationship that generates warmth, laughter, and life. Your gift is your ability to activate the best in ${name}. Your challenge is knowing when to let them rest.`,
+    },
   },
   hidden_healer: {
-    getText: (name) => `Here's a beautiful secret: ${name} didn't come into your life by accident. In Five Element wisdom, ${name}'s energy naturally nourishes yours. You may have noticed that you feel calmer, happier, or more grounded since ${name} came into your life. That's not just love — that's elemental harmony at work. ${name} is your hidden healer, quietly rebalancing your energy every single day.`,
+    A: {
+      // Water+Metal, Wood+Water
+      tagline: 'They Heal You in Silence',
+      getText: (name) => `Here's a beautiful secret: ${name} has been healing you this whole time, and you might not even know it. Since ${name} came into your life, something shifted — maybe you sleep a little deeper, think a little clearer, breathe a little easier. ${name}'s quiet, steady energy works like a gentle current beneath the surface, dissolving stress you didn't know you were carrying. ${name} doesn't need to be dramatic to heal you. Their presence alone is the medicine. This is one of the most quietly powerful bonds in the Five Element system.`,
+    },
+    B: {
+      // Fire+Wood, Earth+Fire, Metal+Earth
+      tagline: 'They Fill a Space You Didn\'t Know Was Empty',
+      getText: (name) => `${name} walked into your life and filled a space you didn't know was empty. That warmth you feel when ${name} curls up next to you? That unexpected laugh when they do something ridiculous? That's not random — that's elemental healing at work. ${name}'s energy naturally nourishes yours, bringing warmth to your cool edges and softness to your sharp corners. You give ${name} a home. In return, ${name} gives you something money can't buy — a daily dose of emotional sunshine.`,
+    },
   },
   growth_partner: {
-    getText: (name) => `You and ${name} have one of the most dynamic bonds in the Five Element system. Your energy challenges theirs — not to harm, but to strengthen. Think of it like a coach and a star athlete. You push ${name} to grow, and in return, ${name} teaches you patience. This bond isn't always effortless, but it's deeply transformative. The key is finding the bridge element that harmonizes your energies.`,
+    A: {
+      // Wood+Earth, Water+Fire
+      tagline: 'You Set the Course, They Learn to Flow',
+      getText: (name) => `You and ${name} have a beautifully challenging dynamic. Your energy naturally guides and shapes theirs — like a river carving a path through soft earth. You set the direction, and ${name} learns to flow with it. You might notice that ${name} responds to your moods more than anyone else's, that your calm can settle them and your tension can unsettle them. That's because your energy carries real weight in this bond. With the right balance, you become the compass that helps ${name} find their center. And in learning to guide gently, you discover a patience you never knew you had.`,
+    },
+    B: {
+      // Fire+Metal, Metal+Wood, Earth+Water
+      tagline: 'Iron Sharpens Iron',
+      getText: (name) => `Your bond with ${name} is like iron sharpening iron — it's not always smooth, but it makes you both stronger. Your energy pushes ${name} out of their comfort zone, and honestly? ${name} probably pushes back sometimes. Maybe they're stubborn when you want them to listen. Maybe they test your limits in ways no one else does. That's not defiance — that's growth in action. The Five Element system says the most transformative bonds are the ones that challenge us. You're not just ${name}'s owner — you're their catalyst for evolution. And they are yours.`,
+    },
   },
   spirit_guardian: {
-    getText: (name) => `${name} is your spiritual bodyguard. In Five Element wisdom, ${name}'s energy has the power to challenge yours — pushing you out of comfort zones you didn't even know you had. You may notice that ${name} is the one who gets you off the couch, who demands your attention when you're spiraling, who forces you to be present. That's not stubbornness — that's guardianship. ${name} is here to make you stronger.`,
+    A: {
+      // Earth+Wood, Fire+Water
+      tagline: 'They Won\'t Let You Stay Stuck',
+      getText: (name) => `${name} is the one who won't let you stay stuck. When you're overthinking, ${name} nudges you to move. When you're too comfortable, ${name} brings a burst of unexpected energy that shakes things up. It might look like mischief, but in Five Element wisdom, it's guardianship. ${name}'s energy naturally challenges yours — not to break you down, but to wake you up. You may have noticed that life has felt more unpredictable since ${name} arrived. More alive. That's not a coincidence. ${name} is here to keep you growing, even when you'd rather stay still.`,
+    },
+    B: {
+      // Metal+Fire, Wood+Metal, Water+Earth
+      tagline: 'They Forge You Through Friction',
+      getText: (name) => `${name} is your spiritual bodyguard — the kind that doesn't just protect you, but forges you. ${name}'s energy is like a whetstone against your blade: it sharpens you through friction. Maybe ${name} demands attention when you're trying to focus. Maybe they force routine changes that disrupt your carefully organized life. That's not chaos — that's your guardian at work. In Five Element wisdom, the bonds that challenge us most are the ones that shape us most deeply. ${name} didn't come into your life to make things easy. They came to make you unbreakable.`,
+    },
   },
 };
 

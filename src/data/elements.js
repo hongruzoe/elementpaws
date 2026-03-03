@@ -182,7 +182,21 @@ export function determinePetElement(monthEl, behaviorAnswers) {
 
 // Determine owner element from month + personality
 export function determineOwnerElement(monthEl, personalityEl) {
-  // If personality differs (especially earth), personality wins
   if (personalityEl !== monthEl) return personalityEl;
   return monthEl;
+}
+
+// Bond copy variant selector — returns 'A' or 'B'
+// Based on CLAUDE.md variant rules for each relationship type
+export function getBondVariant(relationship, ownerEl, petEl) {
+  const combo = `${ownerEl}+${petEl}`;
+  const variantA = {
+    soul_mirror:      ['wood+wood', 'fire+fire'],
+    natural_nurturer: ['water+wood', 'earth+metal'],
+    hidden_healer:    ['water+metal', 'wood+water'],
+    growth_partner:   ['wood+earth', 'water+fire'],
+    spirit_guardian:  ['earth+wood', 'fire+water'],
+  };
+  const setA = variantA[relationship] || [];
+  return setA.includes(combo) ? 'A' : 'B';
 }
