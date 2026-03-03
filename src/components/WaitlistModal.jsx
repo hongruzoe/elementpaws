@@ -1,11 +1,20 @@
 import { useState } from 'react';
 import { trackEvent } from '../utils/analytics';
 
-async function submitWaitlist(name, email, petName, relationshipType, crystalSet) {
-  // TODO: Replace with Formspree or other service
-  console.log('Waitlist submission:', { name, email, petName, relationshipType, crystalSet });
-  // Simulate network delay
-  await new Promise(r => setTimeout(r, 800));
+const FORM_URL = 'https://docs.google.com/forms/d/1jZZjvK5tIOi4NWpFN7t7Bvt4v4wgeBUEVMtkGBVMNIg/formResponse';
+
+async function submitWaitlist(name, email) {
+  const body = new URLSearchParams({
+    'entry.1987254885': name,
+    'entry.2091162598': email,
+  });
+  // Google Forms doesn't support CORS — use no-cors, response is opaque but data is received
+  await fetch(FORM_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: body.toString(),
+  });
 }
 
 export default function WaitlistModal({ petName, relationship, crystalSet, onClose }) {
