@@ -22,7 +22,7 @@ export default function LandingPage({ onStart }) {
         ))}
       </div>
 
-      <div className="landing__inner container">
+      <div className="landing__inner">
         {/* Brand */}
         <div className="landing__brand fade-up">
           <span className="landing__logo">✦ Five Element Bonds ✦</span>
@@ -39,50 +39,66 @@ export default function LandingPage({ onStart }) {
 
         {/* Headline */}
         <h1 className="landing__title fade-up" style={{ animationDelay: '0.2s' }}>
-          Discover the Ancient Energy Bond Between You and Your Pet
+          Discover the Unique Energy Bond Between You and Your Pet
         </h1>
 
         <p className="landing__subtitle fade-up" style={{ animationDelay: '0.3s' }}>
-          Based on the ancient Five Element wisdom — a 3,000-year-old system that maps the energies
+          Based on ancient Five Element wisdom — a 3,000-year-old system that maps the energies
           of nature to every living being — find out what makes your bond unique, and which crystals
           strengthen it.
         </p>
 
-        {/* ── Hero Image ── */}
-        <div className="hero-image-wrap fade-up" style={{ animationDelay: '0.35s' }}>
-          <img
-            src="/images/hero.png"
-            alt="A person holding their pet, surrounded by crystal and elemental energy"
-            className="hero-image"
-            onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-          />
-          {/* Fallback placeholder */}
-          <div className="hero-placeholder" style={{ display: 'none' }}>
-            <span>🐾</span>
-            <p>Your Bond, Illuminated</p>
+        {/* ── Desktop two-column: Hero Image + How It Works ── */}
+        <div className="hero-hiw-row fade-up" style={{ animationDelay: '0.35s' }}>
+          {/* Left: Hero Image */}
+          <div className="hero-hiw-col-image">
+            <div className="hero-image-wrap">
+              <img
+                src="/images/hero.png"
+                alt="A person holding their pet, surrounded by crystal and elemental energy"
+                className="hero-image"
+                onError={e => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              {/* Fallback placeholder */}
+              <div className="hero-placeholder" style={{ display: 'none' }}>
+                <span>🐾</span>
+                <p>Your Bond, Illuminated</p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* ── How It Works ── */}
-        <div className="how-it-works fade-up" style={{ animationDelay: '0.4s' }}>
-          <div className="hiw-label">How It Works</div>
-          <div className="hiw-steps">
-            <div className="hiw-step">
-              <span className="hiw-icon">🐾</span>
-              <h4>Tell us about you & your pet</h4>
-              <p>2-minute quiz</p>
-            </div>
-            <div className="hiw-connector" aria-hidden="true">→</div>
-            <div className="hiw-step">
-              <span className="hiw-icon">✨</span>
-              <h4>Discover your energy bond</h4>
-              <p>Five Element analysis</p>
-            </div>
-            <div className="hiw-connector" aria-hidden="true">→</div>
-            <div className="hiw-step">
-              <span className="hiw-icon">💎</span>
-              <h4>Get your crystal match</h4>
-              <p>Personalized crystal recommendation</p>
+          {/* Right: How It Works */}
+          <div className="hero-hiw-col-steps">
+            <div className="how-it-works">
+              <div className="hiw-label">How It Works</div>
+              <div className="hiw-steps">
+                <div className="hiw-step">
+                  <span className="hiw-icon">🐾</span>
+                  <div className="hiw-step-text">
+                    <h4>Tell us about you & your pet</h4>
+                    <p>2-minute quiz</p>
+                  </div>
+                </div>
+                <div className="hiw-connector" aria-hidden="true">↓</div>
+                <div className="hiw-step">
+                  <span className="hiw-icon">✨</span>
+                  <div className="hiw-step-text">
+                    <h4>Discover your energy bond</h4>
+                    <p>Five Element analysis</p>
+                  </div>
+                </div>
+                <div className="hiw-connector" aria-hidden="true">↓</div>
+                <div className="hiw-step">
+                  <span className="hiw-icon">💎</span>
+                  <div className="hiw-step-text">
+                    <h4>Get your crystal match</h4>
+                    <p>Personalized crystal recommendation</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

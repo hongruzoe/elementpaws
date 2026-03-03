@@ -19,6 +19,9 @@ import { trackEvent } from '../utils/analytics';
 import WaitlistModal from './WaitlistModal';
 import './ReportPage.css';
 
+// ── Site URL — replace with real domain after deploying ──
+const SITE_URL = 'https://your-domain.vercel.app';
+
 // ── Element color helper ──
 function elColor(el) {
   const map = { wood: '#4CAF50', fire: '#FF6040', earth: '#FFB347', metal: '#c0c8d0', water: '#42a5f5' };
@@ -241,19 +244,17 @@ function CrystalMatch({ crystalElement, petName }) {
   );
 }
 
-// ── Share card ref (rendered off-screen for canvas) ──
-function ShareCardCanvas({ cardRef, relationship, ownerElement, petElement, petName }) {
+// ── Share card content (used in both preview and capture) ──
+function ShareCardContent({ relationship, ownerElement, petElement, petName }) {
   const rel = relationshipInfo[relationship];
   const variant = getBondVariant(relationship, ownerElement, petElement);
   const copy = bondCopy[relationship][variant];
-  const siteUrl = window.location.href.split('?')[0];
 
-  // Extract short tagline (first sentence of body copy)
   const bodyText = copy.getText(petName);
   const shortText = bodyText.split('. ').slice(0, 2).join('. ') + '.';
 
   return (
-    <div ref={cardRef} className="share-canvas-card" aria-hidden="true">
+    <>
       {/* Background */}
       <div className="scc-bg" />
 
@@ -270,41 +271,43 @@ function ShareCardCanvas({ cardRef, relationship, ownerElement, petElement, petN
         ))}
       </div>
 
-      {/* Brand */}
-      <div className="scc-brand">✦ Five Element Bonds ✦</div>
+      {/* Flex content wrapper — fills full height, distributes sections */}
+      <div className="scc-content">
+        {/* Top section */}
+        <div className="scc-top">
+          <div className="scc-brand">✦ Five Element Bonds ✦</div>
 
-      {/* Elements */}
-      <div className="scc-elements">
-        <div className="scc-el" style={{ '--c': elColor(ownerElement) }}>
-          <span className="scc-el-icon">{elementInfo[ownerElement].emoji}</span>
-          <span className="scc-el-label">YOU</span>
+          <div className="scc-elements">
+            <div className="scc-el" style={{ '--c': elColor(ownerElement) }}>
+              <span className="scc-el-icon">{elementInfo[ownerElement].emoji}</span>
+              <span className="scc-el-label">YOU</span>
+            </div>
+            <div className="scc-center">
+              <span className="scc-rel-emoji">{rel.emoji}</span>
+            </div>
+            <div className="scc-el" style={{ '--c': elColor(petElement) }}>
+              <span className="scc-el-icon">{elementInfo[petElement].emoji}</span>
+              <span className="scc-el-label">{petName}</span>
+            </div>
+          </div>
+
+          <div className="scc-who">Me & {petName}</div>
         </div>
 
-        <div className="scc-center">
-          <span className="scc-rel-emoji">{rel.emoji}</span>
+        {/* Middle section */}
+        <div className="scc-middle">
+          <div className="scc-rel-name">{rel.emoji} {rel.name}</div>
+          <div className="scc-rel-tagline">{copy.tagline}</div>
+          <div className="scc-quote">"{shortText}"</div>
         </div>
 
-        <div className="scc-el" style={{ '--c': elColor(petElement) }}>
-          <span className="scc-el-icon">{elementInfo[petElement].emoji}</span>
-          <span className="scc-el-label">{petName}</span>
+        {/* Bottom section */}
+        <div className="scc-bottom">
+          <p className="scc-bottom-title">Discover the Unique Energy Bond Between You and Your Pet</p>
+          <p className="scc-bottom-url">{SITE_URL}</p>
         </div>
       </div>
-
-      <div className="scc-who">Me & {petName}</div>
-
-      {/* Relationship */}
-      <div className="scc-rel-name">{rel.emoji} {rel.name}</div>
-      <div className="scc-rel-tagline">{copy.tagline}</div>
-
-      {/* Short quote */}
-      <div className="scc-quote">"{shortText}"</div>
-
-      {/* Bottom */}
-      <div className="scc-bottom">
-        <p className="scc-bottom-title">Discover the Ancient Energy Bond Between You and Your Pet</p>
-        <p className="scc-bottom-url">{siteUrl}</p>
-      </div>
-    </div>
+    </>
   );
 }
 
@@ -315,7 +318,6 @@ function ShareCTA({ relationship, ownerElement, petElement, petName, crystalElem
   const petCrystal   = crystals[crystalElement].pet;
   const elInfo       = elementInfo[crystalElement];
   const color        = elColor(crystalElement);
-  const siteUrl      = window.location.href.split('?')[0];
   const cardRef      = useRef(null);
   const [generating, setGenerating] = useState(false);
 
@@ -323,14 +325,23 @@ function ShareCTA({ relationship, ownerElement, petElement, petName, crystalElem
     trackEvent('share_click', { platform: 'download_card' });
     setGenerating(true);
     try {
-      const canvas = await html2canvas(cardRef.current, {
+      const el = cardRef.current;
+      // Temporarily remove transform so html2canvas captures at full 540×675
+      const savedTransform = el.style.transform;
+      el.style.transform = 'none';
+      el.style.transformOrigin = 'top left';
+
+      const canvas = await html2canvas(el, {
         scale: 2,
         useCORS: true,
-        backgroundColor: null,
+        backgroundColor: '#0d1b2a',
         logging: false,
         width: 540,
         height: 675,
       });
+
+      el.style.transform = savedTransform;
+
       const link = document.createElement('a');
       link.download = `five-element-bond-${petName.toLowerCase()}.png`;
       link.href = canvas.toDataURL('image/png');
@@ -344,7 +355,7 @@ function ShareCTA({ relationship, ownerElement, petElement, petName, crystalElem
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(siteUrl);
+    navigator.clipboard.writeText(SITE_URL);
     trackEvent('share_click', { platform: 'copy_link' });
     alert('Link copied! ✨');
   };
@@ -360,15 +371,16 @@ function ShareCTA({ relationship, ownerElement, petElement, petName, crystalElem
         <div className="section-label">Share Your Bond</div>
         <h2>Tell the World ✨</h2>
 
-        {/* Preview of share card */}
+        {/* Card preview — scaled down version for display */}
         <div className="share-preview-wrap">
-          <ShareCardCanvas
-            cardRef={cardRef}
-            relationship={relationship}
-            ownerElement={ownerElement}
-            petElement={petElement}
-            petName={petName}
-          />
+          <div ref={cardRef} className="share-canvas-card" aria-hidden="true">
+            <ShareCardContent
+              relationship={relationship}
+              ownerElement={ownerElement}
+              petElement={petElement}
+              petName={petName}
+            />
+          </div>
         </div>
 
         {/* Buttons */}
